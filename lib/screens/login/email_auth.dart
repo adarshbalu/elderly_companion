@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elderlycompanion/screens/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +48,9 @@ class _EmailRegisterState extends State<EmailRegister> {
         print(e.toString());
       }
     });
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
+      return HomeScreen();
+    }));
   }
 
   @override

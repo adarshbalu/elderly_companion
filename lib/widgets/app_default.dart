@@ -1,3 +1,4 @@
+import 'package:elderlycompanion/screens/elders/link_elder.dart';
 import 'package:elderlycompanion/screens/home/home_screen.dart';
 import 'package:elderlycompanion/screens/loading/loading_screen.dart';
 import 'package:elderlycompanion/services/auth.dart';
@@ -63,10 +64,10 @@ class AppDrawer extends StatelessWidget {
                         ),
                         ListButtons(
                           onTap: () {
-//                            Navigator.push(context,
-//                                MaterialPageRoute(builder: (context) {
-//                              return LinkRelative();
-//                            }));
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return LinkElder();
+                            }));
                           },
                           icon: Icons.person_add,
                           text: 'Link Elder',
