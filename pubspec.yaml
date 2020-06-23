@@ -37,6 +37,7 @@ dependencies:
   flutter_spinkit: ^4.1.1
   flutter_beautiful_popup: ^1.5.0
   sweet_alert_dialogs: ^0.2.0
+  jitsi_meet: ^0.2.2
 
 
 dev_dependencies:
