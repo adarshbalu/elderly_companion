@@ -22,6 +22,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.1"
+  auto_size_text:
+    dependency: transitive
+    description:
+      name: auto_size_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -146,6 +153,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_beautiful_popup:
+    dependency: "direct main"
+    description:
+      name: flutter_beautiful_popup
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -357,6 +371,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  sweet_alert_dialogs:
+    dependency: "direct main"
+    description:
+      name: sweet_alert_dialogs
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   term_glyph:
     dependency: transitive
     description:

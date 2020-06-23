@@ -1,3 +1,4 @@
+import 'package:elderlycompanion/widgets/app_default.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,6 +9,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      drawer: AppDrawer(),
+      appBar: ElderlyAppBar(),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[Text('Hello')],
+        ),
+      ),
+    );
   }
 }
