@@ -206,20 +206,20 @@ class ElderlyAppBar extends StatelessWidget implements PreferredSizeWidget {
           centerTitle: true,
           elevation: 1,
           actions: <Widget>[
-            GestureDetector(
-              onTap: () {
-                //Navigator.pushNamed(context, ProfileScreen.id);
-              },
-              child: CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.perm_identity,
-                  size: 30,
-                  color: Color(0xff5e444d),
-                ),
-              ),
-            ),
+//            GestureDetector(
+//              onTap: () {
+//                //Navigator.pushNamed(context, ProfileScreen.id);
+//              },
+//              child: CircleAvatar(
+//                radius: 20,
+//                backgroundColor: Colors.white,
+//                child: Icon(
+//                  Icons.perm_identity,
+//                  size: 30,
+//                  color: Color(0xff5e444d),
+//                ),
+//              ),
+//            ),
           ],
         ),
       ],
