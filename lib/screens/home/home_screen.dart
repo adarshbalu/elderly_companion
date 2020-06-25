@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elderlycompanion/models/user.dart';
 import 'package:elderlycompanion/screens/documents/view_documents.dart';
 import 'package:elderlycompanion/screens/elders/link_elder.dart';
+import 'package:elderlycompanion/screens/trackers/tracker_home.dart';
 import 'package:elderlycompanion/screens/video_call/video_call.dart';
 import 'package:elderlycompanion/widgets/app_default.dart';
 import 'package:elderlycompanion/widgets/home_screen_widget.dart';
@@ -159,10 +160,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Color(0xff3d5afe).withOpacity(0.75),
                                   ),
                                   onTap: () {
-//                            Navigator.push(context,
-//                                MaterialPageRoute(builder: (_) {
-//                                  return TrackerHome();
-//                                }));
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (_) {
+                                      return TrackerHomeScreen(
+                                        uid: relative.elderUID,
+                                      );
+                                    }));
                                   },
                                 ),
                                 Padding(
