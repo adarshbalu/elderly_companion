@@ -42,7 +42,10 @@ class _WeightTrackerScreenState extends State<WeightTrackerScreen> {
     for (var s in list) {
       totalWeight += s.weight;
     }
-    averageWeight = totalWeight / list.length;
+    setState(() {
+      averageWeight = totalWeight / list.length;
+    });
+
     return snapshot;
   }
 
