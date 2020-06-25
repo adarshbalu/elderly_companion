@@ -1,4 +1,3 @@
-import 'package:elderlycompanion/screens/home/home_screen.dart';
 import 'package:elderlycompanion/screens/loading/loading_screen.dart';
 import 'package:elderlycompanion/services/auth.dart';
 import 'package:flutter/material.dart';

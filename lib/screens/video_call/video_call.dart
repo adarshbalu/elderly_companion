@@ -1,23 +1,26 @@
-import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elderlycompanion/models/user.dart';
 import 'package:elderlycompanion/screens/home/home_screen.dart';
+import 'package:elderlycompanion/widgets/app_default.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 
 class VideoCall extends StatefulWidget {
+  final String userID, elderID;
+
+  const VideoCall({Key key, this.userID, this.elderID}) : super(key: key);
   @override
   _VideoCallState createState() => _VideoCallState();
 }
 
 class _VideoCallState extends State<VideoCall> {
   final serverText = TextEditingController();
-  TextEditingController roomText = TextEditingController(text: 'TestRoom');
+  TextEditingController roomText;
   TextEditingController subjectText =
-      TextEditingController(text: " Test Meeting");
-  TextEditingController nameText = TextEditingController(text: " Test User");
-  TextEditingController emailText =
-      TextEditingController(text: "fake@email.com");
+      TextEditingController(text: "Urgent Video Call");
+  TextEditingController nameText = TextEditingController(text: "");
+  TextEditingController emailText = TextEditingController(text: "");
   TextEditingController iosAppBarRGBAColor =
       TextEditingController(text: "#0080FF80"); //transparent blue
   var isAudioOnly = false;
@@ -27,6 +30,7 @@ class _VideoCallState extends State<VideoCall> {
   @override
   void initState() {
     super.initState();
+    roomText = TextEditingController(text: widget.userID);
     JitsiMeet.addListener(JitsiMeetingListener(
         onConferenceWillJoin: _onConferenceWillJoin,
         onConferenceJoined: _onConferenceJoined,
@@ -48,132 +52,96 @@ class _VideoCallState extends State<VideoCall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(nameText.text),
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 24.0,
-              ),
-              TextField(
-                readOnly: true,
-                controller: serverText,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Server URL",
+      appBar: ElderlyAppBar(),
+      drawer: AppDrawer(),
+      body: StreamBuilder(
+          stream: Firestore.instance
+              .collection('relatives')
+              .document(widget.userID)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              Relative relative = Relative();
+              relative.getData(snapshot.data);
+
+              roomText.value = TextEditingValue(text: widget.elderID);
+              nameText.value = TextEditingValue(text: relative.name);
+              emailText.value = TextEditingValue(text: relative.email);
+              return Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
                 ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextField(
-                readOnly: true,
-                controller: roomText,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Room",
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CheckboxListTile(
+                      title: Text("Audio Only"),
+                      value: isAudioOnly,
+                      onChanged: _onAudioOnlyChanged,
+                    ),
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    CheckboxListTile(
+                      title: Text("Audio Muted"),
+                      value: isAudioMuted,
+                      onChanged: _onAudioMutedChanged,
+                    ),
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    CheckboxListTile(
+                      title: Text("Video Muted"),
+                      value: isVideoMuted,
+                      onChanged: _onVideoMutedChanged,
+                    ),
+                    Divider(
+                      height: 48.0,
+                      thickness: 2.0,
+                    ),
+                    FutureBuilder(
+                        future: null,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return SizedBox(
+                              height: 64.0,
+                              width: double.maxFinite,
+                              child: RaisedButton(
+                                onPressed: () {
+                                  _joinMeeting();
+                                },
+                                child: Text(
+                                  "Start now",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                color: Colors.blue,
+                              ),
+                            );
+                          } else
+                            return SizedBox(
+                              height: 64.0,
+                              width: double.maxFinite,
+                              child: RaisedButton(
+                                onPressed: () {
+                                  _joinMeeting();
+                                },
+                                child: Text(
+                                  "Start now",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                color: Colors.blue,
+                              ),
+                            );
+                        }),
+                    SizedBox(
+                      height: 48.0,
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextField(
-                readOnly: true,
-                controller: subjectText,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Subject",
-                ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextField(
-                readOnly: true,
-                controller: nameText,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Display Name",
-                ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextField(
-                readOnly: true,
-                controller: emailText,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Email",
-                ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              Platform.isIOS
-                  ? TextField(
-                      controller: iosAppBarRGBAColor,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: "AppBar Color(IOS only)",
-                          hintText: "Hint: This HAS to be in HEX RGBA format"),
-                    )
-                  : SizedBox(),
-              SizedBox(
-                height: 16.0,
-              ),
-              CheckboxListTile(
-                title: Text("Audio Only"),
-                value: isAudioOnly,
-                onChanged: _onAudioOnlyChanged,
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              CheckboxListTile(
-                title: Text("Audio Muted"),
-                value: isAudioMuted,
-                onChanged: _onAudioMutedChanged,
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              CheckboxListTile(
-                title: Text("Video Muted"),
-                value: isVideoMuted,
-                onChanged: _onVideoMutedChanged,
-              ),
-              Divider(
-                height: 48.0,
-                thickness: 2.0,
-              ),
-              SizedBox(
-                height: 64.0,
-                width: double.maxFinite,
-                child: RaisedButton(
-                  onPressed: () {
-                    _joinMeeting();
-                  },
-                  child: Text(
-                    "Join Meeting",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  color: Colors.blue,
-                ),
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
-            ],
-          ),
-        ),
-      ),
+              );
+            } else
+              return CircularProgressIndicator();
+          }),
     );
   }
 
