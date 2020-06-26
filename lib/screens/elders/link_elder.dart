@@ -187,6 +187,37 @@ class _LinkElderState extends State<LinkElder> {
                               title: Text(elder.weight),
                             ),
                           ),
+                          FutureBuilder(
+                              future: getRelativeDataMap(),
+                              builder: (context, future) {
+                                if (future.hasData) {
+                                  return Container(
+                                    width: 50,
+                                    margin:
+                                        EdgeInsets.only(left: 20, right: 20),
+                                    child: RaisedButton(
+                                      color: Colors.orangeAccent,
+                                      textColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      onPressed: () async {
+                                        if (future.hasData) {
+                                          Map<String, dynamic> mapData =
+                                              future.data;
+                                          mapData['elderUID'] = '';
+                                          await Firestore.instance
+                                              .collection('relatives')
+                                              .document(userID)
+                                              .updateData(mapData);
+                                        }
+                                      },
+                                      child: Text('Unlink'),
+                                    ),
+                                  );
+                                } else
+                                  return SizedBox();
+                              }),
                           SizedBox(
                             height: 30,
                           )
@@ -206,5 +237,12 @@ class _LinkElderState extends State<LinkElder> {
         .collection('relatives')
         .document(userID)
         .updateData(map);
+  }
+
+  getRelativeDataMap() async {
+    DocumentSnapshot data =
+        await Firestore.instance.collection('relatives').document(userID).get();
+    Map<String, dynamic> mapData = data.data;
+    return mapData;
   }
 }
