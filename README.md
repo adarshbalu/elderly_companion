@@ -7,17 +7,6 @@ Companion app for Elderly Care app.
 
 App has access to view documents added by the elder, to track the elder's medical vitals, let's the companion to video chat the elder.
 
-<!--
-<img src="1.jpg" align="left"
-width="200"
-    hspace="10" vspace="10">
-<img src="2.jpg" align="center"
-width="200"
-    hspace="10" vspace="10">
-<img src="3.jpg" align="center"
-width="200"
-    hspace="10" vspace="10">
--->
 ## Features
 
 - Tracker
@@ -29,6 +18,30 @@ width="200"
  - Video Call
   - Helps care taker to video chat with elder anytime. Call can be initiated from both ends.
 ## Screenshots
+
+<img src="e00.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Home Screen
+
+<img src="e0.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Documents
+
+<img src="e1.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Video call
+
+<img src="e2.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Tracker
+
+<img src="e3.png" align="center"
+width="200" hspace="10" vspace="10">
+
 
 ## Permissions
 
