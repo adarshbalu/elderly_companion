@@ -1,7 +1,7 @@
 
 # Elderly Companion
 
-Companion app for Elderly Care app.
+Companion app for [Elderly Care](https://github.com/adarshbalu/elderly_app) app.
 
 ## About
 
