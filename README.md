@@ -1,5 +1,5 @@
 
-# Elderly Companion<!-- [![Build Status](https://travis-ci.org/wallabag/android-app.svg?branch=master)](https://travis-ci.org/wallabag/android-app)-->
+# Elderly Companion
 
 Companion app for Elderly Care app.
 
@@ -49,17 +49,15 @@ On Android versions prior to Android 6.0, Elderly Companion requires the followi
 
 - Full Network Access: It uses the network data for the firebase.
 
-- Storage space:For storing all the datas such as documents.
+
 
 ## Contributing
 
 Elderly Companion app is a free and open source project. Any contributions are welcome. Here are a few ways you can help:
- * [Report bugs and make suggestions.](https://github.com/wallabag/android-app/issues)
+ * [Report bugs and make suggestions.](https://github.com/adarshbalu/elderly_companion/issues)
  
 
-## Credits  
 
-<!--Thanks to  Wanicon (https://flaticon.com/authors/wanicon) for the app icon.-->
 
 ## License
 
