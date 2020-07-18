@@ -1,16 +1,65 @@
-# elderlycompanion
 
-A companion application for Elderly Care.
+# Elderly Companion
 
-## Getting Started
+Companion app for [Elderly Care](https://github.com/adarshbalu/elderly_app) app.
 
-This project is a starting point for a Flutter application.
+## About
 
-A few resources to get you started if this is your first Flutter project:
+App has access to view documents added by the elder, to track the elder's medical vitals, let's the companion to video chat the elder.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Features
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Tracker
+  - This feature helps the person to track progress the elder's important health vitals such as sleep, weight, blood pressure, sugar level etc.   - A graphical representation of each would be provided based on the regular data.
+
+- Document Storage
+  - Helps in viewing all personal documents of the elder  - from all personal IDs and journals to medical contacts and insurance informations. 
+  
+ - Video Call
+  - Helps care taker to video chat with elder anytime. Call can be initiated from both ends.
+## Screenshots
+
+<img src="e00.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Home Screen
+
+<img src="e0.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Documents
+
+<img src="e1.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Video call
+
+<img src="e2.png" align="center"
+width="200" hspace="10" vspace="10">
+
+### Tracker
+
+<img src="e3.png" align="center"
+width="200" hspace="10" vspace="10">
+
+
+## Permissions
+
+On Android versions prior to Android 6.0, Elderly Companion requires the following permissions:
+
+- Full Network Access: It uses the network data for the firebase.
+
+
+
+## Contributing
+
+Elderly Companion app is a free and open source project. Any contributions are welcome. Here are a few ways you can help:
+ * [Report bugs and make suggestions.](https://github.com/adarshbalu/elderly_companion/issues)
+ 
+
+
+
+## License
+
+This application is released under GNU GPLv3 (see [LICENSE](LICENSE)).
+Some of the used libraries are released under different licenses.
