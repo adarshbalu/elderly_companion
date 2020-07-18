@@ -19,27 +19,27 @@ App has access to view documents added by the elder, to track the elder's medica
   - Helps care taker to video chat with elder anytime. Call can be initiated from both ends.
 ## Screenshots
 
-<img src="e00.png" align="center"
+<img src="screens/e00.png" align="center"
 width="200" hspace="10" vspace="10">
 
 ### Home Screen
 
-<img src="e0.png" align="center"
+<img src="screens/e0.png" align="center"
 width="200" hspace="10" vspace="10">
 
 ### Documents
 
-<img src="e1.png" align="center"
+<img src="screens/e1.png" align="center"
 width="200" hspace="10" vspace="10">
 
 ### Video call
 
-<img src="e2.png" align="center"
+<img src="screens/e2.png" align="center"
 width="200" hspace="10" vspace="10">
 
 ### Tracker
 
-<img src="e3.png" align="center"
+<img src="screens/e3.png" align="center"
 width="200" hspace="10" vspace="10">
 
 
