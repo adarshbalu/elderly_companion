@@ -3,6 +3,12 @@
 
 Companion app for [Elderly Care](https://github.com/adarshbalu/elderly_app) app.
 
+## Download the App
+[<img src="https://image.flaticon.com/icons/svg/443/443049.svg" align="center"
+width="60" hspace="10" vspace="10">](http://www.mediafire.com/file/h5n4l55o5eu5hy3/Elderly_Companion.apk/file)
+
+
+
 ## About
 
 App has access to view documents added by the elder, to track the elder's medical vitals, let's the companion to video chat the elder.
